@@ -23,7 +23,9 @@ Use RDBMS "MySQL"
 
 ### Association
 has_many: favorites
+
 has_many: reports
+
 has_many: reviews
 
 ## 2 Camerasテーブル
@@ -40,10 +42,15 @@ has_many: reviews
 
 ### Association
 has_many: favorites
+
 has_many: camera_images
+
 has_many: camera_codecs
+
 has_many: reviews
+
 has_many: reports
+
 
 belongs_to: manufacturer
 
@@ -62,6 +69,7 @@ belongs_to: manufacturer
 
 ### Association
 belongs_to: user
+
 belongs_to: camera
 
 ### Option
@@ -79,6 +87,7 @@ belongs_to: camera
 
 ### Association
 belongs_to: user
+
 belongs_to: camera
 
 ### Option
@@ -106,6 +115,7 @@ belongs_to: camera
 
 ### Association
 belongs_to: user
+
 belongs_to: camera
 
 ### Option
@@ -133,6 +143,7 @@ has_many: camera_codecs
 
 ### Association
 has_many: cameras
+
 has_many: codecs
 
 ### Option
