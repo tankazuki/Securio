@@ -1,3 +1,4 @@
+# README
 
 このアプリケーションはポートフォリオ用のデータです。
 
@@ -8,9 +9,7 @@ Ruby on rails version "Rails 5.2.2"
 Use RDBMS "MySQL"
 
 
-#テーブル設計
-
-# README
+# テーブル設計
 
 ## 1 Usersテーブル
 
@@ -23,7 +22,9 @@ Use RDBMS "MySQL"
 |enable     |boolean  | あとでデフォルト値をdefault=trueに変更すること |
 
 ### Association
-
+has_many: favorites
+has_many: reports
+has_many: reviews
 
 ## 2 Camerasテーブル
 
@@ -35,14 +36,21 @@ Use RDBMS "MySQL"
 |audio       |integer|presence: true |
 |size        |string |presence: true |
 |weight      |integer|presence: true, :numericality => { :less_than => 100 }|
-|manufacturer_id |references| |
+|manufacturer_id |references| 
 
 ### Association
+has_many: favorites
+has_many: camera_images
+has_many: camera_codecs
+has_many: reviews
+has_many: reports
 
+belongs_to: manufacturer
 
 ### Option
 - add_foreign_key: :users, manufacturers
 ***
+
 ## 3 Reviewsテーブル
 
 |Column|Type|Options|
@@ -53,6 +61,8 @@ Use RDBMS "MySQL"
 |camera_id    |references ||
 
 ### Association
+belongs_to: user
+belongs_to: camera
 
 ### Option
 - add_foreign_key: :reviews, users
@@ -68,6 +78,8 @@ Use RDBMS "MySQL"
 
 
 ### Association
+belongs_to: user
+belongs_to: camera
 
 ### Option
 - add_foreign_key: :favorites, users
@@ -93,6 +105,8 @@ Use RDBMS "MySQL"
 |camera_id  |references||
 
 ### Association
+belongs_to: user
+belongs_to: camera
 
 ### Option
 - add_foreign_key: :reports, users
@@ -107,7 +121,7 @@ Use RDBMS "MySQL"
 
 
 ### Association
-
+has_many: camera_codecs
 ***
 
 ## 8 CameraCodecsテーブル
@@ -118,6 +132,8 @@ Use RDBMS "MySQL"
 |camera_id  |references||
 
 ### Association
+has_many: cameras
+has_many: codecs
 
 ### Option
 - add_foreign_key: :camera_codecs, users
@@ -131,6 +147,7 @@ Use RDBMS "MySQL"
 |camera_id  |references||
 
 ### Association
+has_many: cameras
 
 ### Option
 - add_foreign_key: :camera_images, cameras
@@ -143,5 +160,5 @@ Use RDBMS "MySQL"
 |manufacturer_name|string|presence: true, unique: true|
 
 ### Association
-
+has_many: camera
 ***
