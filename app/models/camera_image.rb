@@ -1,3 +1,3 @@
 class CameraImage < ApplicationRecord
-  belongs_to :camera
+  belongs_to :cameras
 end
