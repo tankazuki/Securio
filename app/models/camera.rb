@@ -1,4 +1,5 @@
 class Camera < ApplicationRecord
+
   belongs_to :manufacturer
   has_many :favorites
   has_many :camera_images
@@ -14,4 +15,5 @@ class Camera < ApplicationRecord
   validates :weight, presence: true, :numericality => { :less_than => 100 }
 
   add_foreign_key :cameras, :manufacturers
+  
 end
