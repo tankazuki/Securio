@@ -5,7 +5,4 @@ class Report < ApplicationRecord
 
   validates :report_text, presence: true, length: { maximum: 200 }
 
-  add_foreign_key :reports, :users
-  add_foreign_key :reports, :cameras
-
 end

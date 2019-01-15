@@ -13,7 +13,5 @@ class Camera < ApplicationRecord
   validates :audio, presence: true
   validates :size, presence: true
   validates :weight, presence: true, :numericality => { :less_than => 100 }
-
-  add_foreign_key :cameras, :manufacturers
   
 end
