@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  camera_name: MyString
+  resolution: 1
+  camera_type: 1
+  audio: 1
+  size: MyString
+  weight: 1
+  manufacturer: one
+
+two:
+  camera_name: MyString
+  resolution: 1
+  camera_type: 1
+  audio: 1
+  size: MyString
+  weight: 1
+  manufacturer: two

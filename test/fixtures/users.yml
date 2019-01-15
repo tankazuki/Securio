@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  mail: MyString
+  password_digest: MyString
+  user_image: MyString
+  enable: false
+
+two:
+  nickname: MyString
+  mail: MyString
+  password_digest: MyString
+  user_image: MyString
+  enable: false
