@@ -51,4 +51,4 @@ production:
   <<: *default
   database: Securio_production
   username: Securio
-  password: <%= ENV['SECURIO_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
