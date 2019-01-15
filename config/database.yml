@@ -52,3 +52,4 @@ production:
   database: Securio_production
   username: Securio
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/run/mysqld/mysqld.sock
