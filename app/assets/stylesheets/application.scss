@@ -15,3 +15,11 @@
  *= require font-awesome
  */
 @import "bootstrap";
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.menu-icon {
+  color: white;
+}
