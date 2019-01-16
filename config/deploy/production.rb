@@ -49,6 +49,7 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
+#↓の設定を見直した方がいいかも・・
  server '3.17.51.169',
     user: 'ec2-user',
     roles: %w{app db web}
