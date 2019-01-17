@@ -1,0 +1,14 @@
+<div class="login-dark">
+    <form method="post">
+        <h2 class="sr-only">Sign_Up Form</h2>
+        <div class="illustration">
+          <i class="fa fa-user-plus"></i>
+        </div>
+        <%= form_for @admin, url: admin_sign_up_path do |f| %>
+          <%= f.email_field :mail, class: 'form-control', placeholder:'Email' %>
+          <%= f.password_field :password, class: 'form-control', placeholder:'Password' %>
+          <%= f.password_field :password_confirmation, class: 'form-control', placeholder:'Password_confirmation' %>
+          <%= f.submit class: 'btn btn-primary btn-block', value:"新規登録" %>
+        <% end %>
+    </form>
+</div>
