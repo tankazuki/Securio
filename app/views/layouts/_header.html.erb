@@ -1,8 +1,16 @@
 <nav class="navbar navbar-light" style="background-color: black;">
   <a href="#" class="navbar-brand site-title" style="color: white;"><span>Securio</span></a>
     <p class="ml-auto navbar-text actions">
+      <% if sign_in_admin? %>
+        <a class="navbar-brand " style="color: white;">
+          <span>
+            <i class="fa fa-certificate"></i>
+            <%= '管理者' %></span>
+        </a>
+      <% else %>
       <button class="btn btn-primary" type="button"><strong>Sign In</strong></button>
       <button class="btn btn-success" type="button" style="margin-left: 2px;"><strong>Sign Up</strong></button>
+      <% end %>
       <div class="dropdown">
         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: black;">
           <i class="fa fa-navicon fa-2x menu-icon"></i>
@@ -11,6 +19,9 @@
           <a class="dropdown-item" href="#">Securioについて</a>
           <a class="dropdown-item" href="#">防犯カメラをみる</a>
           <a class="dropdown-item" href="#">ニュースをみる</a>
+          <% if sign_in_admin? %>
+            <%= link_to 'ログアウト', sign_out_admin_path, class:"dropdown-item", method: :delete %>
+          <% end %>
         </div>
       </div>
   </p>
