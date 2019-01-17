@@ -1,8 +1,8 @@
 module SessionsHelper
 
   def sign_in_admin(admin)
-		session[:admin_id] = admin.id
-	end
+    session[:admin_id] = admin.id
+  end
 
   def current_admin
     if session[:admin_id]
@@ -11,12 +11,12 @@ module SessionsHelper
   end
 
   def sign_out_admin
-		session.delete(:admin_id)
-		@current_admin = nil
-	end
+    session.delete(:admin_id)
+    @current_admin = nil
+  end
 
   def sign_in_admin?
-		!current_admin.nil?
-	end
-  
+    !current_admin.nil?
+  end
+
 end
