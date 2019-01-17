@@ -12,4 +12,25 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+@import "bootstrap";
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.menu-icon {
+  color: white;
+}
+
+footer {
+  height: 50px;
+  background-color: black;
+}
+
+footer p {
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+}
