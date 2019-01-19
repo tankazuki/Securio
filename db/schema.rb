@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_035130) do
+ActiveRecord::Schema.define(version: 2019_01_19_001740) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mail"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_17_035130) do
   end
 
   create_table "camera_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "camera_image"
+    t.text "camera_image_id"
     t.bigint "camera_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
