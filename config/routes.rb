@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   post   'admin/sign_up', to: 'admins#create'
 
   resources :manufacturers, only:['new', 'create', 'destroy']
-  
+  resources :cameras
+
 end
