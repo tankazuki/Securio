@@ -26,8 +26,14 @@
             <%= f.text_field :height, class: 'form-control', placeholder:'高さ(mm)' %>
             <%= f.text_field :depth, class: 'form-control', placeholder:'奥行き(mm)' %>
           </div>
-          <%= f.label "重量" %>
-          <%= f.text_field :weight, class: 'form-control', placeholder:'重量を入力(kg)' %>
+          <div class="label-layout">
+            <%= f.label "重量" %>
+            <%= f.text_field :weight, class: 'form-control', placeholder:'重量を入力(kg)' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "説明文" %>
+            <%= f.text_field :description, class: 'form-control description-layout', style:'height:300px;' %>
+          </div>
           <div class="submit-layout text-center">
             <%= f.submit "新規登録", class:"btn submit-button" %>
           </div>

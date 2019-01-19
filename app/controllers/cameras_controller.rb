@@ -17,7 +17,7 @@ class CamerasController < ApplicationController
 
   private
   def camera_params
-    params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id)
+    params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id, :description)
   end
 
 end
