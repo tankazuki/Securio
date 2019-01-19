@@ -74,5 +74,6 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem "font-awesome-rails"
 gem 'bcrypt'
-gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem 'refile', require: "refile/rails", git: 'https://github.com/refile/refile.git', branch: 'master'
 gem "refile-mini_magick"
+gem 'cocoon'
