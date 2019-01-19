@@ -34,9 +34,17 @@
             <%= f.label "説明文" %>
             <%= f.text_field :description, class: 'form-control description-layout', style:'height:300px;' %>
           </div>
+          <div class="label-layout">
+            <%= f.fields_for :camera_images do |c| %>
+              <%= c.label "画像投稿" %><br>
+              <%= c.attachment_field :camera_image %>
+            <% end %>
+          </div>
+
           <div class="submit-layout text-center">
             <%= f.submit "新規登録", class:"btn submit-button" %>
           </div>
+
         <% end %>
     </div>
 </div>

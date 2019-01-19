@@ -7,6 +7,8 @@ class Camera < ApplicationRecord
   has_many :reviews
   has_many :reports
 
+  accepts_nested_attributes_for :camera_images, allow_destroy: true
+
   validates :camera_name,  presence: true, length: { maximum: 20 }
   validates :resolution, presence: true
   validates :camera_type, presence: true

@@ -2,6 +2,7 @@ class CamerasController < ApplicationController
 
   def new
     @camera = Camera.new
+    @camera.camera_images.build
   end
 
   def create
@@ -10,14 +11,14 @@ class CamerasController < ApplicationController
     if @camera.save
       redirect_to root_path
     else
-          logger.debug @camera.errors.inspect
       render 'new'
     end
   end
 
   private
   def camera_params
-    params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id, :description)
+    params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id, :description,
+       camera_images_attributes: [:camera_image, :_destroy, :id])
   end
 
 end
