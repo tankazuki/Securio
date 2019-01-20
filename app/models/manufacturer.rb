@@ -1,3 +1,3 @@
 class Manufacturer < ApplicationRecord
-  has_many :cameras
+  has_many :cameras, dependent: :destroy
 end
