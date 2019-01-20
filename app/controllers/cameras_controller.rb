@@ -15,6 +15,12 @@ class CamerasController < ApplicationController
     end
   end
 
+  def destroy
+    @camera = Camera.find(params[:id])
+    @camera.destroy
+    redirect_to admin_camera_index_path
+  end
+
   private
   def camera_params
     params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id, :description,
