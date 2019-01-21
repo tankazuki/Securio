@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   delete 'user/sign_out', to: 'sessions#user_destroy', as: 'sign_out_user'
 
   get    'admin/camera_index', to: 'admins#camera_index', as: 'admin_camera_index'
-
+  get    'admin/user_index', to: 'admins#user_index', as: 'admin_user_index'
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
   resources :users, only:[:destroy]

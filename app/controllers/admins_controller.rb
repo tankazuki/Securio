@@ -4,6 +4,10 @@ class AdminsController < ApplicationController
     @cameras = Camera.all
   end
 
+  def user_index
+    @users = User.where(enable: true)
+  end
+
   def new
     @admin = Admin.new
   end

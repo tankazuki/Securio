@@ -38,6 +38,7 @@
             <%= link_to 'ログアウト', sign_out_user_path, class:"dropdown-item", method: :delete %>
           <% end %>
           <% if sign_in_admin? %>
+            <%= link_to 'ユーザ一覧', admin_user_index_path, class:"dropdown-item" %>
             <%= link_to 'メーカー登録', new_manufacturer_path, class:"dropdown-item" %>
             <%= link_to 'カメラ一覧', admin_camera_index_path, class:"dropdown-item" %>
             <%= link_to 'カメラ登録', new_camera_path, class:"dropdown-item" %>
