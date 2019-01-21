@@ -16,6 +16,9 @@
  */
 @import "bootstrap";
 
+.finger-selector {
+  cursor : pointer;
+}
 .dropdown-toggle::after {
     display: none;
 }
