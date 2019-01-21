@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get    'admin/sign_up', to: 'admins#new'
   post   'admin/sign_up', to: 'admins#create'
 
+  get    'admin/camera_index', to: 'admins#camera_index', as: 'admin_camera_index'
+
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
 

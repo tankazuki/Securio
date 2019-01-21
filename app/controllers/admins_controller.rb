@@ -1,5 +1,9 @@
 class AdminsController < ApplicationController
 
+  def camera_index
+    @cameras = Camera.all
+  end
+
   def new
     @admin = Admin.new
   end

@@ -1,11 +1,11 @@
 class Camera < ApplicationRecord
 
   belongs_to :manufacturer
-  has_many :favorites
-  has_many :camera_images
-  has_many :camera_codecs
-  has_many :reviews
-  has_many :reports
+  has_many :favorites, dependent: :destroy
+  has_many :camera_images, dependent: :destroy
+  has_many :camera_codecs, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   accepts_nested_attributes_for :camera_images, allow_destroy: true
 
