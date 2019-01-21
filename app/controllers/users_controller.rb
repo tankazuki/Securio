@@ -15,6 +15,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.enable = false
+    user.save
+    sign_out_user
+    flash[:success] = "退会しました"
+    redirect_to unsubscribe_user_path
+  end
+
+  def unsubscribe
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname, :mail, :password, :password_confirmation, :user_image_id)

@@ -18,5 +18,8 @@ Rails.application.routes.draw do
 
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
+  resources :users, only:[:destroy]
+  get   'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
+
 
 end
