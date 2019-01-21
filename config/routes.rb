@@ -8,9 +8,18 @@ Rails.application.routes.draw do
   get    'admin/sign_up', to: 'admins#new'
   post   'admin/sign_up', to: 'admins#create'
 
+  get    'user/sign_up', to: 'users#new'
+  post   'user/sign_up', to: 'users#create'
+  get    'sign_in/user', to: 'sessions#user_new', as: 'sign_in_user'
+  post   'sign_in/user', to: 'sessions#user_create'
+  delete 'user/sign_out', to: 'sessions#user_destroy', as: 'sign_out_user'
+
   get    'admin/camera_index', to: 'admins#camera_index', as: 'admin_camera_index'
 
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
+  resources :users, only:[:destroy]
+  get   'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
+
 
 end
