@@ -34,6 +34,7 @@
           <a class="dropdown-item" href="#">防犯カメラをみる</a>
           <a class="dropdown-item" href="#">ニュースをみる</a>
           <% if sign_in_user? %>
+            <a class="dropdown-item" data-toggle="modal" data-target="#UserdeleteConfirmation">退会する</a>
             <%= link_to 'ログアウト', sign_out_user_path, class:"dropdown-item", method: :delete %>
           <% end %>
           <% if sign_in_admin? %>
@@ -46,3 +47,6 @@
       </div>
   </p>
 </nav>
+<% if sign_in_user? %>
+  <%= render partial: 'layouts/user_delete_modal', locals: { user: current_user } %>
+<% end %>
