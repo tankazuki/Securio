@@ -6,8 +6,10 @@
 <div class="row text-center">
 
     <div class="col-md-4">
-      <%=link_to 'https://www.google.com/' do %>
-        <span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-video-camera fa-stack-1x fa-inverse"></i></span>
+      <%= link_to cameras_path do %>
+        <span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i>
+          <i class="fa fa-video-camera fa-stack-1x fa-inverse"></i>
+        </span>
           <h4 class="section-heading">カメラ一覧</h4>
           <p class="text-muted">Securioに登録されている防犯カメラの性能や、防犯カメラにつけているユーザレビューをみることがでます。</p>
       <% end %>
