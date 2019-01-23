@@ -8,37 +8,39 @@
       <% @cameras.each do |camera| %>
         <% @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera.id) %>
         <% @manufacturer_name = Manufacturer.find(camera.manufacturer_id).manufacturer_name %>
-        <div class="camera-box">
-          <div class="camera-data-layout">
-            <div class="camera-image-box">
-              <% if @camera_image.present? %>
-                <%= attachment_image_tag @camera_image, :camera_image, style:"width: 150px; height: 150px" %>
-              <% else %>
-                <%= image_tag('no_image.png', style:"width: 150px; height: 150px") %>
-              <% end %>
+        <%= link_to camera_path(camera) do %>
+          <div class="camera-box">
+            <div class="camera-data-layout">
+              <div class="camera-image-box">
+                <% if @camera_image.present? %>
+                  <%= attachment_image_tag @camera_image, :camera_image, style:"width: 150px; height: 150px" %>
+                <% else %>
+                  <%= image_tag('no_image.png', style:"width: 150px; height: 150px") %>
+                <% end %>
+              </div>
+              <span class="camera-manufacturer-name">
+                <%= @manufacturer_name %>
+              </span><br>
+              <span class="camera_name">
+                <%= camera.camera_name %>
+              </span><br>
+              <span class="camera_type">
+                <%= camera.camera_type %>
+              </span><br>
+              <span>
+                <i class="fa fa-comment-o">
+                  1
+                </i><br>
+                <i class="fa fa-heart-o">
+                  100
+                </i><br>
+                <i class="fa fa-eye">
+                  2000
+                </i><br>
+              </span>
             </div>
-            <span class="camera-manufacturer-name">
-              <%= @manufacturer_name %>
-            </span><br>
-            <span class="camera_name">
-              <%= camera.camera_name %>
-            </span><br>
-            <span class="camera_type">
-              <%= camera.camera_type %>
-            </span><br>
-            <span>
-              <i class="fa fa-comment-o">
-                1
-              </i><br>
-              <i class="fa fa-heart-o">
-                100
-              </i><br>
-              <i class="fa fa-eye">
-                2000
-              </i><br>
-            </span>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

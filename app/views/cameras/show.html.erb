@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="left-side-contents">
+        <div class="left-side-layout">
+          <div class="manufacturer-name-layout">
+            <span><%= @manufacturer_name %></span>
+          </div>
+          <div class="show-camera_name-layout">
+            <span class="camera-title"><%= @camera.camera_name %></span>
+          </div>
+          <div class="show-camera-image">
+            <% if @camera_image.present? %>
+              <%= attachment_image_tag @camera_image, :camera_image, style:"width: 300px; height: 300px" %>
+            <% else %>
+              <%= image_tag('no_image.png', style:"width: 300px; height: 300px") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="right-side-contents">
+        <div class="right-side-layout">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>製品仕様</th>
+                <th></th>
+              </tr>
+            </thead>
+              <tbody>
+                <tr>
+                  <td>機種名</td>
+                  <td><%= @camera.camera_name %></td>
+                </tr>
+                <tr>
+                  <td>カメラタイプ</td>
+                  <td><%= @camera.camera_type %></td>
+                </tr>
+                <tr>
+                  <td>解像度</td>
+                  <td><%= @camera.resolution %></td>
+                </tr>
+                <tr>
+                  <td>音声マイク</td>
+                  <td><%= @camera.audio %></td>
+                </tr>
+                <tr>
+                  <td>寸法</td>
+                  <td><%= @camera.size %></td>
+                </tr>
+                <tr>
+                  <td>重量</td>
+                  <td><%= @camera.weight %></td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
