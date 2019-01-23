@@ -19,6 +19,12 @@ class CamerasController < ApplicationController
     end
   end
 
+  def show
+    @camera = Camera.find(params[:id])
+    @manufacturer_name = Manufacturer.find(@camera.manufacturer_id).manufacturer_name
+    @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: @camera.id)
+  end
+
   def destroy
     @camera = Camera.find(params[:id])
     @camera.destroy
