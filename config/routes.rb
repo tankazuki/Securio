@@ -16,12 +16,13 @@ Rails.application.routes.draw do
 
   get    'admin/camera_index', to: 'admins#camera_index', as: 'admin_camera_index'
   get    'admin/user_index', to: 'admins#user_index', as: 'admin_user_index'
+  get    'admin/news_index', to: 'admins#news_index', as: 'admin_news_index'
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
   resources :users, only:['destroy']
   get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
 
-  resources :news, only:['new', 'create', 'edit', 'update', 'delete']
+  resources :news, only:['new', 'create', 'edit', 'update', 'destroy']
   get    'news/site_information', to: 'news#site_information'
   get    'news/camera_information', to: 'news#camera_information'
 
