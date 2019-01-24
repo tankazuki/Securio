@@ -32,7 +32,8 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">Securioについて</a>
           <%= link_to 'カメラをみる', cameras_path, class:"dropdown-item" %>
-          <a class="dropdown-item" href="#">ニュースをみる</a>
+          <%= link_to 'ニュースをみる', news_site_information_path, class:"dropdown-item"  %>
+
           <% if sign_in_user? %>
             <a class="dropdown-item" data-toggle="modal" data-target="#UserdeleteConfirmation">退会する</a>
             <%= link_to 'ログアウト', sign_out_user_path, class:"dropdown-item", method: :delete %>

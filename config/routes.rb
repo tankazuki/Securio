@@ -18,10 +18,12 @@ Rails.application.routes.draw do
   get    'admin/user_index', to: 'admins#user_index', as: 'admin_user_index'
   resources :manufacturers, only:['new', 'create', 'destroy']
   resources :cameras
-  resources :users, only:[:destroy]
-  get   'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
+  resources :users, only:['destroy']
+  get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
 
-  resources :news
+  resources :news, only:['new', 'create', 'edit', 'update', 'delete']
+  get    'news/site_information', to: 'news#site_information'
+  get    'news/camera_information', to: 'news#camera_information'
 
 
 end
