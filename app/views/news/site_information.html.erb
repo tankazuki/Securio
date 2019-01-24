@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 mx-auto">
+      <div class="page-title">
+        <p class="title">ニュース</p>
+      </div>
+      <div class="change-newsType-buttons mx-auto">
+        <%= link_to news_site_information_path do %>
+          <div class="newsType-button">
+            <p>サイトのお知らせ</p>
+          </div>
+        <% end %>
+        <%= link_to news_camera_information_path do %>
+          <div class="newsType-button">
+            <p>カメラのお知らせ</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="news-topics">
+        <% @many_news.each do |news| %>
+        <div class="news-outside">
+          <div class="news-inside">
+            <div class="mb-2 clearfix">
+              <div class="news-created_at">
+                <% if news.created_at.between?(3.days.ago, Time.now) %>
+                  <span>
+                    <%= image_tag('new.jpeg', style:"width: 25px; height: 25px") %>
+                  </span>
+                <% end %>
+                <%= publication_date(news.created_at) %>
+              </div>
+              <div class="news-image">
+                <% if news.news_image_id.present? %>
+                  <%= attachment_image_tag news, :news_image, style:"width: 100px; height: 100px" %>
+                <% end %>
+              </div>
+              <div class="news-title">
+                <%= news.title.truncate(30) %>
+              </div>
+            </div>
+            <div class="news-content">
+              <%= news.content.truncate(50) %>
+            </div>
+          </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
