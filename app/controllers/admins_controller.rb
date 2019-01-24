@@ -8,6 +8,10 @@ class AdminsController < ApplicationController
     @users = User.where(enable: true)
   end
 
+  def news_index
+    @many_news = News.all
+  end
+
   def new
     @admin = Admin.new
   end
