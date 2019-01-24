@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :news, only:['new', 'create', 'edit', 'update', 'delete']
   get    'news/site_information', to: 'news#site_information'
-  get    'news/caemra_information', to: 'news#camera_information'
+  get    'news/camera_information', to: 'news#camera_information'
 
 
 end
