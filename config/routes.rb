@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   resources :users, only:[:destroy]
   get   'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
 
+  resources :news
+
 
 end
