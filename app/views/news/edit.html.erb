@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>ニュース登録</h1>
+        <%= form_for @news do |f| %>
+          <%= f.label "ニュースタイトル" %>
+          <%= f.text_field :title, class: 'form-control', placeholder:'タイトルを入力' %>
+          <div class="label-layout">
+            <%= f.label "ニュースのタイプ" %><br>
+            <%= f.select :news_type, News.news_types.keys.to_a, {}, class: 'form_control' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "記事本文" %><br>
+            <%= f.text_area :content, class: "content-form", cols:"10"  %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "画像投稿" %><br>
+            <%= f.attachment_field :news_image %>
+          </div>
+
+          <div class="submit-layout text-center">
+            <%= f.submit "新規登録", class:"btn submit-button" %>
+          </div>
+
+        <% end %>
+    </div>
+</div>

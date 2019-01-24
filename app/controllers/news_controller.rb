@@ -21,6 +21,20 @@ class NewsController < ApplicationController
     end
   end
 
+  def edit
+    @news = News.find(params[:id])
+  end
+
+  def update
+    @news = News.find(params[:id])
+    @news.update(news_params)
+    if @news.save
+      redirect_to admin_news_index_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @news = News.find(params[:id])
     @news.destroy
