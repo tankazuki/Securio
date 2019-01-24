@@ -1,5 +1,13 @@
 class NewsController < ApplicationController
 
+  def site_information
+    @many_news = News.where(news_type: 0).order(created_at: 'DESC')
+  end
+
+  def camera_information
+    @many_news = News.where(news_type: 1).order(created_at: 'DESC')
+  end
+
   def new
     @news = News.new
   end
