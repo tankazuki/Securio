@@ -21,6 +21,12 @@ class NewsController < ApplicationController
     end
   end
 
+  def destroy
+    @news = News.find(params[:id])
+    @news.destroy
+    redirect_to admin_news_index_path
+  end
+
   private
   def news_params
     params.require(:news).permit(:title, :content, :news_type, :news_image)
