@@ -9,9 +9,10 @@
 a:link  { color : black; }
 
 .page-title{
-    text-align: center;
-    font-size: 36px;
+  text-align: center;
+  font-size: 36px;
 }
+
 .newsType-button{
   margin: 0 auto;
   text-align: center;
@@ -32,28 +33,31 @@ a:link  { color : black; }
   height: 150px;
   border-bottom: 1px solid;
 }
+
 .news-inside{
   width: 880px;
   height: 130px;
   margin: 10px;
 }
+
 .news-created_at{
+  margin-top: 20px;
   width: 700px;
   height: 30px;
   display: inline-block;
 }
+
 .news-title{
   width: 700px;
   height: 50px;
+  font-size: 24px;
 }
+
 .news-image{
   display: inline;
   width: 100px;
   height: 100px;
   float: right;
-}
-.news-content{
-
 }
 
 .clearfix::after{
@@ -61,6 +65,20 @@ a:link  { color : black; }
   display: block;
   clear: both;
 }
-.news-title{
+
+.show-news-title{
+  width: 900px;
+  height: 50px;
   font-size: 24px;
+  margin-bottom: 100px;
+}
+
+.news-content{
+  width: 100%;
+  height: 600px;
+  padding: 20px;
+}
+
+.show-news-image-layout{
+  width: 100%;
 }
