@@ -39,7 +39,7 @@
               </div>
             </div>
             <div class="news-content">
-              <%= news.content.truncate(50) %>
+              <%= news.content.truncate(45) %><%= link_to '続きをみる', news_path(news) %>
             </div>
           </div>
           </div>
