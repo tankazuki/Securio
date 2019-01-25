@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-sm-10 mx-auto">
+    <div class="news-content">
+      <div class="news-created_at">
+        <%= publication_date(@news.created_at) %>
+      </div>
+      <div class="show-news-title">
+        <%= @news.title %>
+      </div>
+      <div class="show-news-image-layout mx-auto">
+        <div class="show-news-image">
+          <%= attachment_image_tag @news, :news_image, style:"width: 200px; height: 200px" %>
+        </div>
+      </div>
+      <div class="">
+        <%= simple_format(@news.content) %>
+      </div>
+    </div>
+  </div>
+</div>
