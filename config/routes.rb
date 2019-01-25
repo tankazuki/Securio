@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :users, only:['destroy']
   get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
 
-  resources :news, only:['new', 'create', 'edit', 'update', 'destroy']
+  resources :news, only:['new', 'create', 'show', 'edit', 'update', 'destroy']
   get    'news/site_information', to: 'news#site_information'
   get    'news/camera_information', to: 'news#camera_information'
 
