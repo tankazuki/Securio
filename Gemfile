@@ -77,3 +77,4 @@ gem 'bcrypt'
 gem 'refile', require: "refile/rails", git: 'https://github.com/refile/refile.git', branch: 'master'
 gem "refile-mini_magick"
 gem 'cocoon'
+gem 'ransack'
