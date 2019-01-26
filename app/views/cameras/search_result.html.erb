@@ -9,7 +9,7 @@
     </div>
     <div class="col-sm-10">
       <div class="search-result-title-box">
-        <p class="camera-index-title text-center mt-3">カメラ一覧</p>
+        <p class="search-result-title text-center mt-3">検索結果</p>
       </div>
       <% @cameras.each do |camera| %>
         <% @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera.id) %>

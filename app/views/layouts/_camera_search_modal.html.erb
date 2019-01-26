@@ -1,0 +1,53 @@
+<div class="modal fade" id="SearchCameraConfirmation">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p><strong>カメラを検索</strong></p>
+      </div>
+      <%= search_form_for(@q, url:camera_search_result_path) do |f| %>
+        <div class="modal-resolutions">
+          <div class="modal-resolution-title ml-2">
+            <%= f.label :resolution_in, '解像度' %>
+          </div>
+          <div class="modal-resolution-checkbox ml-2">
+            <% Camera.resolutions.each do |i| %>
+              <%= f.check_box :resolution_in, {multiple: true}, i[1], nil %>
+              <%= f.label "resolution_in_#{i[1]}", i[0].upcase %>
+            <% end %>
+          </div>
+          <div class="modal-cameraType-title ml-2">
+            <%= f.label :camera_type_in, 'カメラタイプ' %>
+          </div>
+          <div class="modal-cameraType-checkbox ml-2">
+            <% Camera.camera_types.each do |i| %>
+              <%= f.check_box :camera_type_in, {multiple: true}, i[1], nil %>
+              <%= f.label "camera_type_in_#{i[1]}", i[0].upcase %>
+            <% end %>
+          </div>
+          <div class="modal-manufacturer-title ml-2">
+            <%= f.label :manufacturer_id_in, 'メーカー名' %>
+          </div>
+          <div class="modal-manufacturer-checkbox ml-2">
+            <%= f.collection_check_boxes :manufacturer_id_in, @manufacturers, :id, :manufacturer_name %>
+          </div>
+          <div class="modal-audio-title ml-2">
+            <%= f.label :audio_in, '音声マイク' %>
+          </div>
+          <div class="modal-audio-checkbox ml-2">
+            <% Camera.audios.each do |i| %>
+              <%= f.check_box :audio_in, {multiple: true}, i[1], nil %>
+              <%= f.label "audio_in_#{i[1]}", i[0].upcase %>
+            <% end %>
+          </div>
+        </div>
+
+      <div class="modal-footer">
+        <%= f.submit 'カメラを検索', class:"btn btn-warning" do  %>
+        <i class="fa fa-search"></i>
+        <% end %>
+      <% end %>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
