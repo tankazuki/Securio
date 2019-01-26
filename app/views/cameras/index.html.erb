@@ -2,9 +2,15 @@
   <div class="row">
     <div class="col-sm-2">
         <span>
+          <button type="button" class="btn btn-warning btn-lg btn-block mt-3" data-toggle="modal" data-target="#SearchCameraConfirmation">
+            <i class="fa fa-search"></i>カメラを検索</button>
+          <%= render 'layouts/camera_search_modal' %>
         </span>
     </div>
     <div class="col-sm-10">
+      <div class="search-result-title-box">
+        <p class="search-result-title text-center mt-3">カメラ一覧</p>
+      </div>
       <% @cameras.each do |camera| %>
         <% @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera.id) %>
         <% @manufacturer_name = Manufacturer.find(camera.manufacturer_id).manufacturer_name %>
