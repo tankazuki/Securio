@@ -19,7 +19,13 @@ Rails.application.routes.draw do
   get    'admin/news_index', to: 'admins#news_index', as: 'admin_news_index'
   resources :manufacturers, only:['new', 'create', 'destroy']
 
-  resources :cameras
+  resources :cameras do
+    collection do
+      get  'resolution_groups_index'
+      get  'camera_type_groups_index'
+      get  'manufacturer_groups_index'
+    end
+  end
     get   'camera/search_result', to: 'cameras#search_result', as: 'camera_search_result'
   resources :users, only:['destroy']
   get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
