@@ -1,4 +1,5 @@
 class CamerasController < ApplicationController
+  before_action :search_camera_method
 
   def index
     @cameras = Camera.all
@@ -31,10 +32,27 @@ class CamerasController < ApplicationController
     redirect_to admin_camera_index_path
   end
 
+  def search_result
+    @q = Camera.search(search_params)
+    @cameras = @q.result(distinct: true)
+  end
+
+  def search_camera_method
+    @q = Camera.ransack(params[:q])
+    @manufacturers = Manufacturer.all
+    @cameras = Camera.all
+    @result = @q.result(distinct: true)
+    @result_count = @result.count
+  end
+
   private
   def camera_params
     params.require(:camera).permit(:camera_name, :resolution, :camera_type, :audio, :weight, :manufacturer_id, :description,
        camera_images_attributes: [:camera_image, :_destroy, :id])
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 
 end
