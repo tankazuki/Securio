@@ -1,5 +1,6 @@
 class CamerasController < ApplicationController
   before_action :search_camera_method
+  before_action :manufacture_all
 
   def index
     @cameras = Camera.all
@@ -39,11 +40,30 @@ class CamerasController < ApplicationController
 
   def search_camera_method
     @q = Camera.ransack(params[:q])
-    @manufacturers = Manufacturer.all
     @cameras = Camera.all
     @result = @q.result(distinct: true)
     @result_count = @result.count
   end
+
+  def manufacture_all
+    @manufacturers = Manufacturer.all
+  end
+
+  def resolution_groups_index
+    @result_cameras = Camera.where(resolution: params[:resolution])
+    @result_name = Camera.resolutions.key(params[:resolution].to_i)
+  end
+
+  def camera_type_groups_index
+    @result_cameras = Camera.where(camera_type: params[:camera_type])
+    @result_name = Camera.camera_types.key(params[:camera_type].to_i)
+  end
+
+  def manufacturer_groups_index
+    @result_cameras = Camera.where(manufacturer_id: params[:manufacturer_id])
+    @result_name = Manufacturer.find(params[:manufacturer_id]).manufacturer_name
+  end
+
 
   private
   def camera_params
