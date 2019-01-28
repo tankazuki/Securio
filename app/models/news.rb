@@ -5,6 +5,6 @@ class News < ApplicationRecord
 
   attachment :news_image
 
-  enum news_type: {"site_news": 0, "camera_news": 1}
+  enum news_type: {"サイト案内": 0, "カメラ案内": 1}
 
 end
