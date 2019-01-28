@@ -15,7 +15,7 @@ class Camera < ApplicationRecord
   validates :camera_type, presence: true
   validates :audio, presence: true
   validates :size, presence: true
-  validates :weight, presence: true, :numericality => { :less_than => 100 }
+  validates :weight, presence: true, :numericality => { :less_than => 100000 }
 
   enum resolution:{"4K": 0, "FullHD": 1, "HD": 2, "VGA": 3}
   enum camera_type:{"ボックス型": 0, "ドーム型": 1, "バレット型": 2, "非破壊型": 3, "魚眼カメラ": 4, "PTZカメラ": 5}
