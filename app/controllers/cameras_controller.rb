@@ -13,7 +13,7 @@ class CamerasController < ApplicationController
 
   def create
     @camera = Camera.new(camera_params)
-    @camera.size = params[:camera][:width] + '*' + params[:camera][:height] + '*' + params[:camera][:depth]
+    @camera.size = params[:camera][:width] + '×' + params[:camera][:height] + '×' + params[:camera][:depth]
     if @camera.save
       redirect_to root_path
     else

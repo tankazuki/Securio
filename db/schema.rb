@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_052111) do
+ActiveRecord::Schema.define(version: 2019_01_28_073417) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mail"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_052111) do
     t.integer "camera_type"
     t.integer "audio"
     t.string "size"
-    t.integer "weight"
+    t.float "weight"
     t.bigint "manufacturer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
