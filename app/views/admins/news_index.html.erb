@@ -22,7 +22,7 @@
             <td><%= simple_time(news.created_at) %></td>
             <td><%= news.news_type %></td>
             <td>
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#NewsDeleteConfirmation">削除</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#NewsDeleteConfirmation_<%= news.id  %>">削除</button>
               <%= render partial: 'layouts/news_delete_modal', locals: { news: news } %>
               <%= link_to edit_news_path(news) do %>
                 <button type="button" class="btn btn-primary">編集</button>
