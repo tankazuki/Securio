@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light" style="background-color: black;">
-  <a href="#" class="navbar-brand site-title" style="color: white;"><span>Securio</span></a>
+  <%= link_to 'Securio', root_path, class:"navbar-brand site-title", style:"color: white;"%>
     <p class="ml-auto navbar-text actions">
 
       <% if sign_in_admin? %>
@@ -39,12 +39,12 @@
             <%= link_to 'ログアウト', sign_out_user_path, class:"dropdown-item", method: :delete %>
           <% end %>
           <% if sign_in_admin? %>
-            <%= link_to 'ユーザ一覧', admin_user_index_path, class:"dropdown-item" %>
-            <%= link_to 'メーカー登録', new_manufacturer_path, class:"dropdown-item" %>
-            <%= link_to 'カメラ一覧', admin_camera_index_path, class:"dropdown-item" %>
-            <%= link_to 'カメラ登録', new_camera_path, class:"dropdown-item" %>
-            <%= link_to 'ニュース登録', new_news_path, class:"dropdown-item" %>
-            <%= link_to 'ニュース一覧', admin_news_index_path, class:"dropdown-item" %>
+            <%= link_to 'ユーザ一覧', admin_user_index_path, class:"dropdown-item index-group-color"%>
+            <%= link_to 'メーカー登録', new_manufacturer_path, class:"dropdown-item registration-group-color" %>
+            <%= link_to 'カメラ一覧', admin_camera_index_path, class:"dropdown-item index-group-color" %>
+            <%= link_to 'カメラ登録', new_camera_path, class:"dropdown-item registration-group-color" %>
+            <%= link_to 'ニュース一覧', admin_news_index_path, class:"dropdown-item index-group-color" %>            
+            <%= link_to 'ニュース登録', new_news_path, class:"dropdown-item registration-group-color" %>
             <%= link_to 'ログアウト', sign_out_admin_path, class:"dropdown-item", method: :delete %>
           <% end %>
         </div>
