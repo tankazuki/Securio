@@ -16,6 +16,13 @@
               <%= image_tag('no_image.png', style:"width: 300px; height: 300px") %>
             <% end %>
           </div>
+          <% if sign_in_user? %>
+            <div class="new-comment">
+              <button type="button" class="btn btn-warning btn-lg btn-block mt-3" data-toggle="modal" data-target="#NewCameraComment">
+                <i class="fa fa-commenting-o"></i>コメントする</button>
+              <%= render partial: 'layouts/camera_comment', locals: { review: @review, camera: @camera }%>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
