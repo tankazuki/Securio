@@ -79,3 +79,4 @@ gem "refile-mini_magick"
 gem 'cocoon'
 gem 'ransack'
 gem 'jquery-validation-rails'
+gem 'impressionist'
