@@ -26,6 +26,8 @@ class CamerasController < ApplicationController
     @camera = Camera.find(params[:id])
     @manufacturer_name = Manufacturer.find(@camera.manufacturer_id).manufacturer_name
     @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: @camera.id)
+    impressionist(@camera)
+    @page_views = @camera.impressionist_count
   end
 
   def destroy
@@ -63,6 +65,10 @@ class CamerasController < ApplicationController
   def manufacturer_groups_index
     @result_cameras = Camera.where(manufacturer_id: params[:manufacturer_id])
     @result_name = Manufacturer.find(params[:manufacturer_id]).manufacturer_name
+  end
+
+  def impression_ranking
+    @result_cameras = Camera.all.order(impressions_count: 'DESC')
   end
 
 

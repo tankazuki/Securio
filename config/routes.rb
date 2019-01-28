@@ -25,9 +25,10 @@ Rails.application.routes.draw do
       get  'camera_type_groups_index'
       get  'manufacturer_groups_index'
     end
-    resources :reviews, only:[:create, :edit, :update, :destroy] 
+    resources :reviews, only:[:create, :edit, :update, :destroy]
   end
     get   'camera/search_result', to: 'cameras#search_result', as: 'camera_search_result'
+    get   'camera/impression_ranking', to: 'cameras#impression_ranking', as: 'camera_impression_ranking'
   resources :users, only:['destroy']
   get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
 

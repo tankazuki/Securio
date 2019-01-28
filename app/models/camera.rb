@@ -1,4 +1,5 @@
 class Camera < ApplicationRecord
+  is_impressionable counter_cache: true
 
   belongs_to :manufacturer
   has_many :favorites, dependent: :destroy

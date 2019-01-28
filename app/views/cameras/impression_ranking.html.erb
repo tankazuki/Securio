@@ -35,13 +35,19 @@
     </div>
     <div class="col-sm-10">
       <div class="search-result-title-box">
-        <p class="search-result-title text-center mt-3">検索結果</p>
+        <p class="camera-index-title text-center mt-3">アクセス数ランキング <%= @result_name %></p>
       </div>
-      <% @cameras.each do |camera| %>
+      <% @result_cameras.each_with_index do |camera, ranking| %>
         <% @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera.id) %>
         <% @manufacturer_name = Manufacturer.find(camera.manufacturer_id).manufacturer_name %>
         <%= link_to camera_path(camera) do %>
-          <div class="camera-box">
+          <% if ranking.between?(0,2)  %>
+            <div class="ranking-camera-box ranking-margin-x mb-3">
+              <%= image_tag("ranking_#{ranking + 1}.png", style:"width: 50px; height: 40px") %>
+          <% else %>
+            <div class="ranking-camera-box">
+              <%= ranking + 1 %>位
+          <% end %>
             <div class="camera-data-layout">
               <div class="camera-image-box">
                 <% if @camera_image.present? %>
