@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get  'camera_type_groups_index'
       get  'manufacturer_groups_index'
     end
+    resources :reviews, only:[:create, :edit, :update, :destroy] 
   end
     get   'camera/search_result', to: 'cameras#search_result', as: 'camera_search_result'
   resources :users, only:['destroy']

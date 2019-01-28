@@ -22,6 +22,7 @@ class CamerasController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @camera = Camera.find(params[:id])
     @manufacturer_name = Manufacturer.find(@camera.manufacturer_id).manufacturer_name
     @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: @camera.id)
