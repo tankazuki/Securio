@@ -22,7 +22,7 @@
             <td><%= simple_time(user.created_at) %></td>
             <td></td>
             <td>
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#UserdeleteConfirmation">削除</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#UserdeleteConfirmation_<%= user.id  %>">削除</button>
               <%= render partial: 'layouts/user_delete_modal', locals: { user: user } %>
             </td>
         </tr>
