@@ -26,7 +26,7 @@
             <td><%= camera.camera_type %></td>
             <td><%= simple_time(camera.created_at) %></td>
             <td>
-              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation">削除</button>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation_<%= camera.id  %>" >削除</button>
               <%= render partial: 'layouts/camera_delete_modal', locals: { camera: camera } %>
             </td>
         </tr>
