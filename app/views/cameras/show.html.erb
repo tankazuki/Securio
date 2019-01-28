@@ -16,6 +16,11 @@
               <%= image_tag('no_image.png', style:"width: 300px; height: 300px") %>
             <% end %>
           </div>
+          <div class="show-camera-data mt-4 mb-4 text-center">
+            <div class="impression">
+              <i class="fa fa-eye fa-2x"></i>　<%= number_with_delimiter(@page_views) %> PV
+            </div>
+          </div>
           <% if sign_in_user? %>
             <div class="new-comment">
               <button type="button" class="btn btn-warning btn-lg btn-block mt-3" data-toggle="modal" data-target="#NewCameraComment">
