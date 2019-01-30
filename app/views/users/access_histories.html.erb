@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    <div class="access-history-title text-center">
+      閲覧履歴
+    </div>
+    <% @histories.each do |history| %>
+      <% camera_id = history[0] %>
+      <% camera_name = history[1] %>
+      <% resolution = Camera.resolutions.invert[history[2]]  %>
+      <% weight = history[3] %>
+      <% camera_type = Camera.camera_types.invert[history[4]] %>
+      <% manufacturer_name = Manufacturer.find(history[5]).manufacturer_name %>
+      <% camera_created_at = history[6].in_time_zone('Tokyo') %>
+      <% impression_created_at = history[7].in_time_zone('Tokyo') %>
+      <% camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera_id) %>
+
+      <%= link_to camera_path(camera_id) do %>
+        <div class="access-history-layout mt-2 mb-2">
+          <div class="camera-image-layout mt-2 mr-2">
+            <% if camera_image.present? %>
+              <%= attachment_image_tag camera_image, :camera_image, style:"width: 150px; height: 150px" %>
+            <% else %>
+              <%= image_tag('no_image.png', style:"width: 150px; height: 150px") %>
+            <% end %>
+          </div>
+          <div class="manufacturer-name-layout mt-2 ml-2">
+            <%= manufacturer_name %>
+          </div>
+          <div class="camera-name-layout mt-2 ml-2">
+            <%= camera_name %>
+          </div>
+          <div class="camera-access-date-layout mt-2 ml-2">
+            閲覧日時: <%= simple_time(impression_created_at) %>
+          </div>
+          <div class="camera-created-date-layout mt-2 ml-2">
+            カメラ登録日時: <%= simple_time(camera_created_at) %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
