@@ -30,6 +30,20 @@ class CamerasController < ApplicationController
     @page_views = @camera.impressionist_count
   end
 
+  def edit
+    @camera = Camera.find(params[:id])
+  end
+
+  def update
+    @camera = Camera.find(params[:id])
+    @camera.update(camera_params)
+    if @camera.save
+      redirect_to admin_camera_index_path
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     @camera = Camera.find(params[:id])
     @camera.destroy
