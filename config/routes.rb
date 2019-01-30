@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get   'camera/impression_ranking', to: 'cameras#impression_ranking', as: 'camera_impression_ranking'
   resources :users, only:['destroy']
   get    'unsubscribe', to: 'users#unsubscribe', as: 'unsubscribe_user'
+  get    'user/access_histories', to: 'users#access_histories', as: 'user_access_histories'
 
   resources :news, only:['new', 'create', 'edit', 'update', 'destroy']
   get    'news/site_information', to: 'news#site_information'

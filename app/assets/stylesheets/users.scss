@@ -1,3 +1,34 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.access-history-layout{
+  width: 100%;
+  height: 200px;
+  border: 1px solid;
+}
+
+.access-history-title{
+  font-size: 36px;
+}
+.manufacturer-name-layout{
+  width: 60%;
+  height: 40px;
+}
+.camera-name-layout{
+  width: 80%;
+  height: 60px;
+  font-size: 30px;
+}
+.camera-image-layout{
+  width: 150px;
+  height: 150px;
+  float: right;
+}
+.camera-access-date-layout{
+  width: 60%;
+  height: 30px;
+}
+.camera-created-date-layout{
+  width: 60%;
+  height: 30px;
+}
