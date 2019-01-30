@@ -28,6 +28,9 @@
             <td>
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation_<%= camera.id  %>" >削除</button>
               <%= render partial: 'layouts/camera_delete_modal', locals: { camera: camera } %>
+              <%= link_to edit_camera_path(camera) do %>
+                <button type="button" class="btn btn-primary">編集</button>
+              <% end %>
             </td>
         </tr>
       <% end %>
