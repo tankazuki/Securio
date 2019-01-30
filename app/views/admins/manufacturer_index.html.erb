@@ -17,6 +17,9 @@
             <td>
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation_<%= manufacturer.id  %>">削除</button>
               <%= render partial: 'layouts/manufacturer_delete_modal', locals: { manufacturer: manufacturer } %>
+              <%= link_to edit_manufacturer_path(manufacturer) do %>
+                <button type="button" class="btn btn-primary">編集</button>
+              <% end %>
             </td>
         </tr>
       <% end %>
