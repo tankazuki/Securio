@@ -35,6 +35,7 @@
           <%= link_to 'ニュースをみる', news_site_information_path, class:"dropdown-item"  %>
 
           <% if sign_in_user? %>
+            <%= link_to '閲覧履歴', user_access_histories_path, class:"dropdown-item" %>
             <a class="dropdown-item" data-toggle="modal" data-target="#UserdeleteConfirmation_<% current_user.id %>">退会する</a>
             <%= link_to 'ログアウト', sign_out_user_path, class:"dropdown-item", method: :delete %>
           <% end %>
