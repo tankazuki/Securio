@@ -27,6 +27,19 @@ class UsersController < ApplicationController
   def unsubscribe
   end
 
+  def access_histories
+    sql = "
+    SELECT cameras.id, cameras.camera_name, cameras.resolution, cameras.weight, cameras.camera_type, cameras.manufacturer_id, cameras.created_at, impressions.created_at
+    FROM cameras
+    INNER JOIN impressions
+    ON cameras.id = impressions.impressionable_id
+    WHERE impressions.user_id = #{current_user.id}
+    ORDER BY impressions.created_at DESC;
+    "
+    result = ActiveRecord::Base.connection.execute(sql)
+    @histories = result.to_a
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname, :mail, :password, :password_confirmation, :user_image_id)
