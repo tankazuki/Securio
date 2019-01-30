@@ -1,0 +1,46 @@
+<div class="row ">
+    <div class="col-md-8 offset-md-2">
+      <h1>カメラ編集</h1>
+        <%= form_for @camera do |f| %>
+          <%= f.label "カメラ名" %>
+          <%= f.text_field :camera_name, class: 'form-control', placeholder:'カメラ名を入力' %>
+          <div class="label-layout">
+            <%= f.label "メーカー名" %><br>
+            <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :manufacturer_name, class:'form_control' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "解像度" %><br>
+            <%= f.select :resolution, Camera.resolutions.keys.to_a, {}, class:'form_control' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "カメラタイプ" %><br>
+            <%= f.select :camera_type, Camera.camera_types.keys.to_a, {}, class: 'form_control' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "音声マイク" %><br>
+            <%= f.select :audio, Camera.audios.keys.to_a, {}, class: 'form_control' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "寸法" %><br>
+            <%= f.text_field :width, class: 'size-weight-layout mb-2', placeholder:'幅(mm)' %>
+            <%= f.text_field :height, class: 'size-weight-layout mb-2 ', placeholder:'高さ(mm)' %>
+            <%= f.text_field :depth, class: 'size-weight-layout mb-2', placeholder:'奥行き(mm)' %>
+          </div>
+          <div class="label-layout">
+            <%= f.label "重量" %>
+            <%= f.text_field :weight, class: 'form-control', placeholder:'重量を入力(g)' %>
+          </div>
+          <div class="label-layout">
+            <%= f.fields_for :camera_images do |c| %>
+              <%= c.label "画像投稿" %><br>
+              <%= c.attachment_field :camera_image %>
+            <% end %>
+          </div>
+
+          <div class="submit-layout text-center">
+            <%= f.submit "編集", class:"btn submit-button" %>
+          </div>
+
+        <% end %>
+    </div>
+</div>
