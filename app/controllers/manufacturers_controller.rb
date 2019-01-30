@@ -14,6 +14,9 @@ class ManufacturersController < ApplicationController
   end
 
   def destroy
+    @manufacturer = Manufacturer.find(params[:id])
+    @manufacturer.destroy
+    redirect_to admin_manufacturer_index_path
   end
 
   private
