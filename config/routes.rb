@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get    'admin/camera_index', to: 'admins#camera_index', as: 'admin_camera_index'
   get    'admin/user_index', to: 'admins#user_index', as: 'admin_user_index'
   get    'admin/news_index', to: 'admins#news_index', as: 'admin_news_index'
+  get    'admin/manufacturer_index', to:  'admins#manufacturer_index', as:  'admin_manufacturer_index'
+   
   resources :manufacturers, only:['new', 'create', 'destroy']
 
   resources :cameras do

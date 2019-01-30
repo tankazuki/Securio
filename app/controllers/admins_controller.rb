@@ -12,6 +12,10 @@ class AdminsController < ApplicationController
     @many_news = News.all
   end
 
+  def manufacturer_index
+    @manufacturers = Manufacturer.all
+  end
+
   def new
     @admin = Admin.new
   end
