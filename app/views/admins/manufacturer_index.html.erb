@@ -15,6 +15,8 @@
             <td><%= simple_time(manufacturer.created_at) %></td>
             <td><%= manufacturer_count %></td>
             <td>
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmation_<%= manufacturer.id  %>">削除</button>
+              <%= render partial: 'layouts/manufacturer_delete_modal', locals: { manufacturer: manufacturer } %>
             </td>
         </tr>
       <% end %>
