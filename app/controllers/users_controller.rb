@@ -20,8 +20,13 @@ class UsersController < ApplicationController
     user.enable = false
     user.save
     sign_out_user
-    flash[:success] = "退会しました"
-    redirect_to unsubscribe_user_path
+    if sign_in_admin?
+      flash[:success] = "ユーザの退会処理が完了しました"
+      redirect_to admin_user_index_path
+    else
+      flash[:success] = "退会しました"
+      redirect_to unsubscribe_user_path
+    end
   end
 
   def unsubscribe
