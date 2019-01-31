@@ -15,6 +15,7 @@ class CamerasController < ApplicationController
     @camera = Camera.new(camera_params)
     @camera.size = params[:camera][:width] + '×' + params[:camera][:height] + '×' + params[:camera][:depth]
     if @camera.save
+      flash[:success] = "カメラの投稿が完了しました"
       redirect_to root_path
     else
       render 'new'
@@ -38,6 +39,7 @@ class CamerasController < ApplicationController
     @camera = Camera.find(params[:id])
     @camera.update(camera_params)
     if @camera.save
+      flash[:success] = "カメラの編集が完了しました"
       redirect_to admin_camera_index_path
     else
       render 'edit'
@@ -47,6 +49,7 @@ class CamerasController < ApplicationController
   def destroy
     @camera = Camera.find(params[:id])
     @camera.destroy
+    flash[:success] = "カメラの削除が完了しました"
     redirect_to admin_camera_index_path
   end
 

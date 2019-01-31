@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
   	if @user.save
       sign_in_user @user
-      #flash[:success] = "新規登録が成功しました"
+      flash[:success] = "新規登録が成功しました"
       redirect_to root_path
     else
       render 'new'

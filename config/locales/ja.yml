@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    attributes:
+      news:
+        title: タイトル
+        content: 記事本文
+      manufacturer:
+        manufacturer_name: メーカー名
+      camera:
+        camera_name: カメラ名
+        weight: 重量
+        size: 寸法
