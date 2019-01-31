@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :user_sign_check, only:[:admin_new, :admin_create, :user_new, :user_create]
+  before_action :admin_sign_check, only:[:admin_new, :admin_create, :user_new, :user_create]
 
   def admin_new
     @admin = Admin.new

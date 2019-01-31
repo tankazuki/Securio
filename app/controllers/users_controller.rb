@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only:[:destroy, :unsubscribe, :access_histories]
 
   def new
     @user = User.new

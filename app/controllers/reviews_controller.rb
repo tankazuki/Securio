@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_admin!, only:[:create]
 
   def create
     camera_id = params[:camera_id]

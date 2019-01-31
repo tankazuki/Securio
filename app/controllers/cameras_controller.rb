@@ -1,4 +1,5 @@
 class CamerasController < ApplicationController
+  before_action :authenticate_admin!, only:[:new, :create, :edit, :update, :destroy]
   before_action :search_camera_method
   before_action :manufacture_all
 

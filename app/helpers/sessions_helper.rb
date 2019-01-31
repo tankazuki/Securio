@@ -38,4 +38,30 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+  def authenticate_user!
+		unless sign_in_user?
+			flash[:danger] = 'ログインしてください'
+			redirect_to sign_in_user_path
+		end
+	end
+
+	def authenticate_admin!
+		unless sign_in_admin?
+			flash[:danger] = '権限がありません'
+			redirect_to root_path
+		end
+	end
+
+  def user_sign_check
+		if sign_in_user?
+			redirect_to root_path
+		end
+	end
+
+	def admin_sign_check
+		if sign_in_admin?
+			redirect_to root_path
+		end
+	end
+
 end
