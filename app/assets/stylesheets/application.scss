@@ -16,6 +16,9 @@
  */
 @import "bootstrap";
 
+li{
+  list-style: none;
+}
 .finger-selector {
   cursor : pointer;
 }
@@ -53,4 +56,15 @@ footer p {
   text-align: center;
   line-height: 50px;
   color: #fff;
+}
+
+#error_explanation{
+  width: 100%;
+  background-color: pink;
+  border: 1px solid red;
+}
+.message{
+  font-size: 24px;
+  color: white;
+  font-family: YuGothic;
 }
