@@ -7,6 +7,7 @@ class ManufacturersController < ApplicationController
   def create
     @manufacturer = Manufacturer.new(manufacturer_params)
     if @manufacturer.save
+      flash[:success] = "メーカーの登録が完了しました"
       redirect_to root_path
     else
       render 'new'
@@ -21,6 +22,7 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
     @manufacturer.update(manufacturer_params)
     if @manufacturer.save
+      flash[:success] = "メーカーの編集が完了しました"
       redirect_to admin_manufacturer_index_path
     else
       render 'edit'
@@ -30,6 +32,7 @@ class ManufacturersController < ApplicationController
   def destroy
     @manufacturer = Manufacturer.find(params[:id])
     @manufacturer.destroy
+    flash[:success] = "メーカーの削除が完了しました"
     redirect_to admin_manufacturer_index_path
   end
 
