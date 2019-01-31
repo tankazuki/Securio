@@ -29,26 +29,27 @@ class SessionsController < ApplicationController
 	end
 
   def user_create
-	user = User.find_by(mail: params[:session][:mail].downcase)
- 		if user && user.authenticate(params[:session][:password])
-  			if user.enable == true
-      		 sign_in_user user
-				flash.now[:success] = "ログインしました"
-      		 redirect_to root_url
-  			else
-  				flash.now[:danger] = "すでに退会済みユーザーです"
-  				render 'User_new'
-  			end
-  		else
-  			flash.now[:danger] = "入力内容の確認をお願いします"
-  			render 'User_new'
-  		end
-	end
+    user = User.find_by(mail: params[:session][:mail].downcase)
+    if user && user.authenticate(params[:session][:password])
+      if user.enable == true
+        sign_in_user user
+        user.last_sign_in_time = Time.now
+        user.save
+        flash.now[:success] = "ログインしました"
+        redirect_to root_url
+      else
+        flash.now[:danger] = "すでに退会済みユーザーです"
+        render 'User_new'
+      end
+    else
+      flash.now[:danger] = "入力内容の確認をお願いします"
+      render 'User_new'
+    end
+  end
 
   def user_destroy
     sign_out_user
     flash[:success] = "ログアウトしました"
     redirect_to root_url
   end
-
 end
