@@ -15,6 +15,7 @@ class NewsController < ApplicationController
   def create
     @news = News.new(news_params)
     if @news.save
+      flash[:success] = "ニュースの投稿が完了しました"
       redirect_to root_path
     else
       render 'new'
@@ -33,6 +34,7 @@ class NewsController < ApplicationController
     @news = News.find(params[:id])
     @news.update(news_params)
     if @news.save
+      flash[:success] = "カメラの編集が完了しました"
       redirect_to admin_news_index_path
     else
       render 'edit'
@@ -42,6 +44,7 @@ class NewsController < ApplicationController
   def destroy
     @news = News.find(params[:id])
     @news.destroy
+    flash[:success] = "カメラの削除が完了しました"
     redirect_to admin_news_index_path
   end
 
