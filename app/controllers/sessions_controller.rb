@@ -38,12 +38,12 @@ class SessionsController < ApplicationController
         flash.now[:success] = "ログインしました"
         redirect_to root_url
       else
-        flash.now[:danger] = "すでに退会済みユーザーです"
-        render 'User_new'
+        flash[:danger] = "すでに退会済みユーザーです"
+        redirect_to sign_in_user_path
       end
     else
-      flash.now[:danger] = "入力内容の確認をお願いします"
-      render 'User_new'
+      flash[:danger] = "入力内容の確認をお願いします"
+      redirect_to sign_in_user_path
     end
   end
 
