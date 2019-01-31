@@ -68,3 +68,25 @@ footer p {
   color: white;
   font-family: YuGothic;
 }
+.alert-success{
+  width: 100%;
+  background-color: #E6FFE9;
+  border: 1px solid green;
+}
+.alert-danger{
+  width: 100%;
+  background-color: pink;
+  border: 1px solid red;
+}
+.message-success{
+  margin-top: 10px;
+  font-size: 24px;
+  font-family: YuGothic;
+  color: #3c763d;
+}
+.message-danger{
+  margin-top: 10px;
+  font-size: 24px;
+  color: red;
+  font-family: YuGothic;
+}
