@@ -1,4 +1,5 @@
 class NewsController < ApplicationController
+  before_action :authenticate_admin!, only:[:new, :create, :edit, :update, :destroy]
 
   def site_information
     @many_news = News.where(news_type: 0).order(created_at: 'DESC')
