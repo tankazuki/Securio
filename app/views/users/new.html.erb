@@ -1,13 +1,7 @@
+<div class="text-center">
+  <%= render 'layouts/validation_error_messages', instance: @user %>
+</div>
 <div class="login-dark">
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div>
     <h2 class="sr-only">Sign_Up Form</h2>
     <%= form_for @user, url: user_sign_up_path do |f| %>
