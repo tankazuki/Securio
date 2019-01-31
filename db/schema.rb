@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_073417) do
+ActiveRecord::Schema.define(version: 2019_01_31_054244) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mail"
@@ -138,6 +138,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_073417) do
     t.boolean "enable", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "last_sign_in_time"
   end
 
   add_foreign_key "camera_codecs", "cameras"
