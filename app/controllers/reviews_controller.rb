@@ -1,14 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_admin!, only:[:create]
+  before_action :authenticate_user!, only:[:create]
 
   def create
     camera_id = params[:camera_id]
     @review = Review.new(review_params)
-    if @review.save
-      redirect_to camera_path(camera_id)
-    else
-      redirect_to camera_path(camera_id)
-    end
+    @review.save
+    flash[:success] = "コメントを投稿しました"
+    redirect_to camera_path(camera_id)
   end
 
 
