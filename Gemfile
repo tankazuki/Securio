@@ -78,6 +78,6 @@ gem 'refile', require: "refile/rails", git: 'https://github.com/refile/refile.gi
 gem "refile-mini_magick"
 gem 'cocoon'
 gem 'ransack'
-gem 'jquery-validation-rails'
+gem 'jQuery-Validation-Engine-rails'
 gem 'impressionist'
 gem 'rails-i18n'
