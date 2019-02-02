@@ -20,6 +20,9 @@
             <div class="impression">
               <i class="fa fa-eye fa-2x"></i>　<%= number_with_delimiter(@page_views) %> PV
             </div>
+            <div class="avg-rate">
+              <i class="fa fa-star star-color fa-2x" aria-hidden="true" ></i> <%= @avg_result %>
+            </div>
           </div>
           <% if sign_in_user? %>
             <div class="new-comment">
