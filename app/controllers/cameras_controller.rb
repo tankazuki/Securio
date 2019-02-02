@@ -30,6 +30,7 @@ class CamerasController < ApplicationController
     @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: @camera.id)
     impressionist(@camera)
     @page_views = @camera.impressionist_count
+    @reviews = Review.where(camera_id: @camera.id).order(created_at: 'DESC')
   end
 
   def edit
