@@ -82,7 +82,7 @@
                 <% if review.user.user_image_id.nil? %>
                   <%= image_tag('no_image.png', style:"width: 100px; height: 100px; border-radius: 50px;") %>
                 <% else %>
-                  <%= attachment_image_tag review.user.user_image_id, :user_image, style:"width: 100px; height: 100px " %>
+                  <%= attachment_image_tag current_user, :user_image, style:"width: 100px; height: 100px " %>
                 <% end %>
               </div>
               <div class="user_name ">
@@ -105,12 +105,15 @@
                   </div>
                 <% end %>
               <% end %>
-              <div class="edit ml-4">
-                <i class="fa fa-edit fa-2x" aria-hidden="true"></i>
-              </div>
-              <div class="destroy ml-2">
-                <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i>
-              </div>
+              <% if current_user.id == review.user_id %>
+                <div class="destroy ml-2">
+                  <button type="button" data-toggle="modal" data-target="#ReviewDeleteConfirmation_<%= review.id  %>">
+                  <i class="fa fa-trash-o fa-2x" aria-hidden="true">
+                  </i>
+                  </button>
+                  <%= render partial: 'layouts/camera_comment_delete_modal', locals: { review: review, camera: @camera } %>
+                </div>
+              <% end %>
             </div>
             <div class="review-space-layout">
               <% if review.review_image_id.present? %>
