@@ -9,6 +9,18 @@ class ReviewsController < ApplicationController
     redirect_to camera_path(camera_id)
   end
 
+  def destroy
+    review = Review.find(params[:camera_id])
+    if review.user_id == current_user.id
+      review.destroy
+      flash[:success] = "コメントを削除しました"
+      redirect_to camera_path(params[:id])
+    else
+      flash[:danger] = "権限がありません"
+      redirect_to camera_path(params[:id])
+    end
+  end
+
 
   private
   def review_params
