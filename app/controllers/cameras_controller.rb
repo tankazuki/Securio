@@ -31,6 +31,12 @@ class CamerasController < ApplicationController
     impressionist(@camera)
     @page_views = @camera.impressionist_count
     @reviews = Review.where(camera_id: @camera.id).order(created_at: 'DESC')
+    review_sum_point = @reviews.sum(:rate)
+    if review_sum_point == 0 || review_sum_point.nil? || @camera.review_count == 0
+      @avg_result = "--"
+    else
+      @avg_result = review_sum_point / @camera.review_count
+    end
   end
 
   def edit
