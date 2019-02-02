@@ -9,7 +9,6 @@
       </div>
       <div class="modal-body">コメントを削除しますか？</div>
       <div class="modal-footer">
-        <%= review.id %>
         <%= link_to '削除', camera_review_path(review), method: :delete, class:"btn btn-danger"  %>
         <button type="button" class="btn btn-primary" data-dismiss="modal">閉じる</button>
        </div>
