@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except:[:new, :create]
 
   def camera_index
     @cameras = Camera.all
@@ -24,8 +24,8 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      #sign_in_admin @admin
-      #flash[:success] = "新規登録が成功しました"
+      sign_in_admin @admin
+      flash[:success] = "新規登録が成功しました"
       redirect_to root_path
      else
       render 'new'
