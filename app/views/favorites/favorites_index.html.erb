@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    <div class="access-history-title text-center">
+      お気に入り一覧
+    </div>
+    <% @favorites.each do |favorite| %>
+      <% camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: favorite.camera_id) %>
+      <%= link_to camera_path(favorite.camera_id) do %>
+        <div class="access-history-layout mt-2 mb-2">
+          <div class="camera-image-layout mt-2 mr-2">
+            <% if camera_image.present? %>
+              <%= attachment_image_tag camera_image, :camera_image, style:"width: 150px; height: 150px" %>
+            <% else %>
+              <%= image_tag('no_image.png', style:"width: 150px; height: 150px") %>
+            <% end %>
+          </div>
+          <div class="manufacturer-name-layout mt-2 ml-2">
+            <%= favorite.camera.manufacturer.manufacturer_name %>
+          </div>
+          <div class="camera-name-layout mt-2 ml-2">
+            <%= favorite.camera.camera_name %>
+          </div>
+          <div class="camera-access-date-layout mt-2 ml-2">
+            お気に入り追加日: <%= simple_time(favorite.created_at) %>
+          </div>
+          <div class="camera-created-date-layout mt-2 ml-2">
+            カメラ登録日時: <%= simple_time(favorite.camera.created_at) %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
