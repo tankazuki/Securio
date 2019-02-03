@@ -16,4 +16,5 @@
 //= require jquery.validationEngine-en
 //= require jquery.validationEngine
 //= require bootstrap
+//= require jquery_ujs
 //= require_tree .

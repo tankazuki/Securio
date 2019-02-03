@@ -23,12 +23,31 @@
             <div class="avg-rate">
               <i class="fa fa-star star-color fa-2x" aria-hidden="true" ></i> <%= @avg_result %>
             </div>
+            <div class="favorite_count">
+              <i class="fa fa-heart fa-2x heart-color"></i> <%= @camera.favorites_count %>
+            </div>
           </div>
           <% if sign_in_user? %>
             <div class="new-comment">
               <button type="button" class="btn btn-warning btn-lg btn-block mt-3" data-toggle="modal" data-target="#NewCameraComment">
                 <i class="fa fa-commenting-o"></i>コメントする</button>
               <%= render partial: 'layouts/camera_comment', locals: { review: @review, camera: @camera }%>
+            </div>
+            <div class="favorite-icon">
+              <% if @camera.favorite_user(current_user) %>
+                <% @favorite_id = Favorite.find_by(user_id: current_user.id, camera_id: params[:id]).id %>
+                <div data-user_id="<%= current_user.id %>" data-camera_id="<%= @camera.id %>" data-favorite_id = "<%= @favorite_id %>" class="favorite-btn btn-block text-center" >
+                  <div class="remove-favorite">
+                    お気に入り済み
+                  </div>
+                </div>
+                <% else %>
+                  <div data-user_id="<%= current_user.id %>" data-camera_id="<%= @camera.id %>" class="favorite-btn btn-block text-center">
+                    <div class="add-favorite">
+                      お気に入りをする
+                    </div>
+                  </div>
+                <% end %>
             </div>
           <% end %>
         </div>
@@ -135,3 +154,45 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$(".favorite-btn").dblclick(function(){
+ return false;
+});
+$(document).on('turbolinks:load', function() {
+  $('.favorite-btn').on('click', function(e) {
+    e.preventDefault();
+    var favoriteBtn = $(this);
+    var userId = favoriteBtn.data("user_id");
+    var cameraId = favoriteBtn.data("camera_id");
+    var favoriteId = favoriteBtn.data("favorite_id")
+    var favoriteClass = favoriteBtn.find('div');
+    var favoriteFind = $(this).find('div').attr('class');
+    var favorite = $(this);
+    var url = favoriteFind == 'add-favorite' ?  '/favorites' : '/favorites/' + favoriteId
+    var $type = favoriteFind == 'add-favorite' ? 'POST' : 'DELETE';
+    $.ajax({
+      type: $type,
+      url: '/cameras/'+ cameraId  + url,
+      data: {camera_id: cameraId,
+              user_id: userId
+            }
+      })
+    .done(function(response) {
+      console.log(response);
+      if (favoriteFind == 'add-favorite'){
+      favoriteClass.removeClass('add-favorite').addClass('remove-favorite');
+      favoriteClass.text('お気に入り済み');
+      favoriteBtn.data('favorite_id', response.favorite_id)
+      } else{
+        favoriteClass.removeClass('remove-favorite').addClass('add-favorite');
+        favoriteClass.text('お気に入りにする');
+      }
+    })
+    .fail(function() {
+      return false;
+    });
+  });
+});
+
+</script>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_075921) do
+ActiveRecord::Schema.define(version: 2019_02_02_084937) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "mail"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_02_01_075921) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
-    t.integer "favorites_count"
+    t.integer "favorites_count", default: 0
     t.integer "impressions_count", default: 0
     t.integer "review_count", default: 0
     t.index ["manufacturer_id"], name: "index_cameras_on_manufacturer_id"
