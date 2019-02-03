@@ -24,4 +24,9 @@ class Camera < ApplicationRecord
   attr_accessor :width
   attr_accessor :height
   attr_accessor :depth
+
+  def favorite_user(user_id)
+   favorites.find_by(user_id: user_id)
+  end
+  
 end

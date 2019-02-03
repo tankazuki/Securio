@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :manufacturers, only:['new', 'create', 'edit', 'update', 'destroy']
 
   resources :cameras do
+    resources :favorites, only:['create', 'destroy']
     collection do
       get  'resolution_groups_index'
       get  'camera_type_groups_index'
