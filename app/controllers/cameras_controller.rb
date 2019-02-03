@@ -96,6 +96,10 @@ class CamerasController < ApplicationController
     @result_cameras = Camera.all.order(impressions_count: 'DESC')
   end
 
+  def favorites_ranking
+    @result_cameras = Camera.all.order(favorites_count: 'DESC')
+  end
+
 
   private
   def camera_params
