@@ -41,4 +41,5 @@ Rails.application.routes.draw do
   get    'news/camera_information', to: 'news#camera_information'
   get    'news/:id', to: 'news#show'
 
+  get    'favorites', to: 'favorites#favorites_index', as: 'favorites_index'
 end
