@@ -35,7 +35,7 @@ class CamerasController < ApplicationController
     if review_sum_point == 0 || review_sum_point.nil? || @camera.review_count == 0
       @avg_result = "--"
     else
-      @avg_result = review_sum_point / @camera.review_count
+      @avg_result = (review_sum_point / @camera.review_count).round(2)
     end
   end
 
