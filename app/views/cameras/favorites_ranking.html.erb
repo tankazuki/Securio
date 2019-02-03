@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+        <span>
+          <button type="button" class="btn btn-warning btn-lg btn-block mt-3" data-toggle="modal" data-target="#SearchCameraConfirmation">
+            <i class="fa fa-search"></i>カメラを検索</button>
+          <%= render 'layouts/camera_search_modal' %>
+        </span>
+        <div class="side-camera-contents">
+          <div class="resolutions">
+            <div class="resolution-title mt-4">
+              解像度で探す
+            </div>
+            <% Camera.resolutions.each do |resolution| %>
+              <%= link_to resolution[0], resolution_groups_index_cameras_path(resolution: resolution[1]), class:"btn ml-2" %><br>
+            <% end %>
+          </div>
+          <div class="camera_types">
+            <div class="camera_type-title mt-4">
+              タイプで探す
+            </div>
+            <% Camera.camera_types.each do |camera_type| %>
+              <%= link_to camera_type[0], camera_type_groups_index_cameras_path(camera_type: camera_type[1]), class:" btn ml-2" %><br>
+            <% end %>
+          </div>
+          <div class="manufacturer">
+            <div class="manufacturer-title mt-4">
+              メーカーで探す
+            </div>
+            <% @manufacturers.each do |manufacturer| %>
+              <%= link_to manufacturer.manufacturer_name, manufacturer_groups_index_cameras_path(manufacturer_id: manufacturer.id), class:" btn ml-2" %><br>
+            <% end %>
+          </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+      <div class="search-result-title-box">
+        <p class="camera-index-title text-center mt-3">お気に入りランキング <%= @result_name %></p>
+      </div>
+      <% @result_cameras.each_with_index do |camera, ranking| %>
+        <% @camera_image = CameraImage.where.not(camera_image_id: nil).find_by(camera_id: camera.id) %>
+        <% @manufacturer_name = Manufacturer.find(camera.manufacturer_id).manufacturer_name %>
+        <%= link_to camera_path(camera) do %>
+          <% if ranking.between?(0,2)  %>
+            <div class="ranking-camera-box ranking-margin-x mb-3">
+              <%= image_tag("ranking_#{ranking + 1}.png", style:"width: 50px; height: 40px") %>
+          <% else %>
+            <div class="ranking-camera-box">
+              <%= ranking + 1 %>位
+          <% end %>
+            <div class="camera-data-layout">
+              <div class="camera-image-box">
+                <% if @camera_image.present? %>
+                  <%= attachment_image_tag @camera_image, :camera_image, style:"width: 150px; height: 150px" %>
+                <% else %>
+                  <%= image_tag('no_image.png', style:"width: 150px; height: 150px") %>
+                <% end %>
+              </div>
+              <span class="camera-manufacturer-name">
+                <%= @manufacturer_name %>
+              </span><br>
+              <span class="camera_name">
+                <%= camera.camera_name.truncate(15) %>
+              </span><br>
+              <span class="camera_type">
+                <%= camera.camera_type %>
+              </span><br>
+              <span>
+                <i class="fa fa-comment-o">
+                  <%= camera.review_count %>
+                </i><br>
+                <i class="fa fa-heart-o">
+                  <%= camera.favorites_count %>
+                </i><br>
+                <i class="fa fa-eye">
+                  <%= camera.impressions_count %>
+                </i><br>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
