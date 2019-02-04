@@ -127,14 +127,16 @@
                   </div>
                 <% end %>
               <% end %>
-              <% if current_user.id == review.user_id %>
-                <div class="destroy ml-2">
-                  <button type="button" data-toggle="modal" data-target="#ReviewDeleteConfirmation_<%= review.id  %>">
-                  <i class="fa fa-trash-o fa-2x" aria-hidden="true">
-                  </i>
-                  </button>
-                  <%= render partial: 'layouts/camera_comment_delete_modal', locals: { review: review, camera: @camera } %>
-                </div>
+              <% if sign_in_user? %>
+                <% if current_user.id == review.user_id %>
+                  <div class="destroy ml-2">
+                    <button type="button" data-toggle="modal" data-target="#ReviewDeleteConfirmation_<%= review.id  %>">
+                    <i class="fa fa-trash-o fa-2x" aria-hidden="true">
+                    </i>
+                    </button>
+                    <%= render partial: 'layouts/camera_comment_delete_modal', locals: { review: review, camera: @camera } %>
+                  </div>
+                <% end %>
               <% end %>
             </div>
             <div class="review-space-layout">
