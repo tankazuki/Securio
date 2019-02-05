@@ -24,7 +24,8 @@
               <i class="fa fa-star star-color fa-2x" aria-hidden="true" ></i> <%= @avg_result %>
             </div>
             <div class="favorite_count">
-              <i class="fa fa-heart fa-2x heart-color"></i> <%= @camera.favorites_count %>
+              <i class="fa fa-heart fa-2x heart-color"></i>
+              <span class="favorite-count"><%= @camera.favorites_count %></span>
             </div>
           </div>
           <% if sign_in_user? %>
@@ -171,6 +172,7 @@ $(document).on('turbolinks:load', function() {
     var favoriteClass = favoriteBtn.find('div');
     var favoriteFind = $(this).find('div').attr('class');
     var favorite = $(this);
+    var favorite_count = $('.favorite-count')
     var url = favoriteFind == 'add-favorite' ?  '/favorites' : '/favorites/' + favoriteId
     var $type = favoriteFind == 'add-favorite' ? 'POST' : 'DELETE';
     $.ajax({
@@ -183,12 +185,16 @@ $(document).on('turbolinks:load', function() {
     .done(function(response) {
       console.log(response);
       if (favoriteFind == 'add-favorite'){
+        console.log(response);
       favoriteClass.removeClass('add-favorite').addClass('remove-favorite');
       favoriteClass.text('お気に入り済み');
-      favoriteBtn.data('favorite_id', response.favorite_id)
+      favoriteBtn.data('favorite_id', response.favorite_id);
+      favorite_count.text(response.favorite_count);
+
       } else{
         favoriteClass.removeClass('remove-favorite').addClass('add-favorite');
         favoriteClass.text('お気に入りにする');
+        favorite_count.text(response.favorite_count);
       }
     })
     .fail(function() {
